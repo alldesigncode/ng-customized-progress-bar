@@ -1,0 +1,19 @@
+<div
+  class="progress"
+  [ngClass]="
+    ((firstChange && !loading) || (initialValue === 100 && !loading)) &&
+    'hidden'
+  "
+>
+  <div class="progress__wrapper" [ngStyle]="setBarSize()">
+    <div class="progress__element" #progress>
+      <div
+        class="progress__element--counter"
+        *ngIf="initialValue !== 0 && showProgress"
+        [ngStyle]="initialValue === 100 && { margin: '15px 5px 0 0' }"
+      >
+        {{ initialValue }}%
+      </div>
+    </div>
+  </div>
+</div>

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-loading-progressbar"
+    }
+  },
+  "defaultProject": "ng-loading-progressbar",
+  "cli": {
+    "analytics": false
+  }
 }
