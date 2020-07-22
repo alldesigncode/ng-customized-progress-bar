@@ -19,6 +19,8 @@ import { gsap } from 'gsap';
 })
 export class ProgressBarComponent implements OnChanges {
   @ViewChild('progress', { static: true }) progress: ElementRef;
+  @ViewChild('progressContainer', { static: true })
+  progressContainer: ElementRef;
 
   initialValue = 0;
   endValue = 100;
@@ -38,6 +40,10 @@ export class ProgressBarComponent implements OnChanges {
       if (this.loading !== undefined) {
         if (this.initialValue === this.endValue) {
           this.initialValue = 0;
+          gsap.to(this.progressContainer.nativeElement, {
+            duration: 0,
+            autoAlpha: 1
+          });
         }
         this.animateProgress(this.loading);
       }
@@ -64,6 +70,13 @@ export class ProgressBarComponent implements OnChanges {
         gsap.to(this.progress.nativeElement, {
           width: `${this.initialValue}%`,
         });
+        if (this.initialValue === this.endValue && !this.loading) {
+          gsap.to(this.progressContainer.nativeElement, {
+            delay: 0.2,
+            duration: 0,
+            autoAlpha: 0,
+          });
+        }
         this.cdr.detectChanges();
         setTimeout(start, speed);
       }

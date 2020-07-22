@@ -1,7 +1,7 @@
 
 
 <app-progress-bar
-  [loading]="loading"
-  [showProgress]="false"
-  [barSize]="3"
+  [loading]="loading || loadingSecond || loadingThird"
+  [showProgress]="true"
+  [barSize]="5"
 ></app-progress-bar>

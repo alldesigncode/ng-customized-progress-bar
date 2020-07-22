@@ -1,7 +1,8 @@
 <div
+  #progressContainer
   class="progress"
   [ngClass]="
-    ((firstChange && !loading) || (initialValue === 100 && !loading)) &&
+    (firstChange && !loading) &&
     'hidden'
   "
 >
